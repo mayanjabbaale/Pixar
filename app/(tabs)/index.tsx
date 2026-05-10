@@ -1,5 +1,5 @@
 import { Minus, Ellipsis } from "lucide-react-native";
-import { Text, View, Image, FlatList, ActivityIndicator, ScrollView } from "react-native";
+import { Text, View, Image, ActivityIndicator, ScrollView } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { getImages } from "@/lib/unsplash";
 import { Random } from "unsplash-js/dist/methods/photos/types";
