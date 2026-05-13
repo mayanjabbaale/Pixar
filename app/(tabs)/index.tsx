@@ -40,9 +40,12 @@ export default function Home() {
           data={photos}
           masonry
           numColumns={2}
-          contentContainerClassName="px-1"
+          contentContainerStyle={{ paddingHorizontal: 4 }}
           showsVerticalScrollIndicator={false}
-          renderItem={({ item, index }) => <ImageCard title={String(index)} source={item.urls.regular} width={item.width} height={item.height} index={index} />}
+          renderItem={({ item, index }) => {
+            const title = item.description || item.alt_description || item.user?.name || "Untitled Photo";
+            return <ImageCard title={title} source={item.urls.regular} width={item.width} height={item.height} index={index} />;
+          }}
         />
       )}
     </SafeAreaView>
