@@ -1,10 +1,9 @@
-import { Minus, Ellipsis } from "lucide-react-native";
-import { Text, View, Image, ActivityIndicator, ScrollView } from "react-native";
+import { Minus } from "lucide-react-native";
+import { Text, View, Image, ActivityIndicator } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { getImages } from "@/lib/unsplash";
 import { Random } from "unsplash-js/dist/methods/photos/types";
 import { useState, useEffect } from "react";
-import { imageData } from "@/lib/data";
 import ImageCard from "@/components/ImageCard";
 import { FlashList } from "@shopify/flash-list";
 
@@ -12,8 +11,6 @@ export default function Home() {
   const [photos, setPhotos] = useState<Random[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-
-  // const loading = false;
 
   useEffect(() => {
     getImages()
@@ -40,9 +37,12 @@ export default function Home() {
           data={photos}
           masonry
           numColumns={2}
-          contentContainerClassName="px-1"
+          contentContainerStyle={{ paddingHorizontal: 4 }}
           showsVerticalScrollIndicator={false}
-          renderItem={({ item, index }) => <ImageCard title={String(index)} source={item.urls.regular} width={item.width} height={item.height} index={index} />}
+          renderItem={({ item, index }) => {
+            const title = item.description || item.alt_description || item.user?.name || "Untitled Photo";
+            return <ImageCard title={title} source={item.urls.regular} width={item.width} height={item.height} index={index} />;
+          }}
         />
       )}
     </SafeAreaView>
