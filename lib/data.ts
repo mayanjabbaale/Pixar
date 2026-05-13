@@ -13,7 +13,7 @@ const image10 = require('../assets/samples/image-10.jpg');
 
 
 export const imageData = [
-  { id: '1', source: image1, ...Image.resolveAssetSource(image1), title: 'Bost rising'},
+  { id: '1', source: image1, ...Image.resolveAssetSource(image1), title: 'Boat rising'},
   { id: '2', source: image2, ...Image.resolveAssetSource(image2), title: ''},
   { id: '3', source: image3, ...Image.resolveAssetSource(image3), title: ''},
   { id: '4', source: image4, ...Image.resolveAssetSource(image4), title: ''},
